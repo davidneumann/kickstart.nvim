@@ -275,6 +275,9 @@ vim.o.termguicolors = true
 -- [[ Basic Keymaps ]]
 require('keymaps')
 
+-- Autocommands
+require("autocommands")
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -383,8 +386,11 @@ vim.defer_fn(function()
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
+    --Required for ejs
+    embedded_template = { enable = true, },
+
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
+    auto_install = true,
 
     highlight = { enable = true },
     indent = { enable = true },
@@ -441,6 +447,19 @@ vim.defer_fn(function()
       --   },
       -- },
     },
+  }
+end, 0)
+
+-- Add ejs support to treesitter
+vim.defer_fn(function()
+  local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+  parser_config.ejs = {
+    install_info = {
+      url = "https://github.com/tree-sitter/tree-sitter-embedded-template",
+      files = { "src/parser.c" },
+      requires_generate_from_grammar = true,
+    },
+    filetype = "ejs",
   }
 end, 0)
 
@@ -521,20 +540,6 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {
-    typescript = {
-      format = {
-        indentSize = vim.o.shiftwidth,
-        convertTabsToSpaces = vim.o.expandtab,
-        tabSize = vim.o.tabstop,
-      },
-    },
-    javascript = {
-      format = {
-        indentSize = vim.o.shiftwidth,
-        convertTabsToSpaces = vim.o.expandtab,
-        tabSize = vim.o.tabstop,
-      },
-    },
     completions = {
       completeFunctionCalls = true,
     },
