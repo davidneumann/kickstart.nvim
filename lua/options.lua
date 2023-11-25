@@ -8,3 +8,7 @@ vim.opt.expandtab = true
 
 vim.wo.relativenumber = true
 vim.opt.scrolloff = 12
+
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  vim.opt.shell = "pwsh.exe"
+end
