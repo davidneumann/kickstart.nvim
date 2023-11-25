@@ -5,7 +5,7 @@ vim.keymap.set('n', '<Space>e', ':NvimTreeToggle<cr>', { desc = 'Toggle file tre
 vim.keymap.set('n', '<space>cf', ':lua vim.lsp.buf.format()<cr>', { desc = 'Format code with LSP' })
 
 vim.keymap.set('n', '<leader>gg', '<cmd>Git<cr>', { desc = '[G]it Fugitive' })
-vim.keymap.set('n', '<leader>gP', '<cmd>Git push<cr>', { desc = '[G]it [P]ush' })
+vim.keymap.set('n', '<leader>gp', '<cmd>Git push<cr>', { desc = '[G]it [P]ush' })
 
 -- Disable macro recording
 vim.keymap.set('n', 'q', '<Nop>')
