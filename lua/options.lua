@@ -12,3 +12,7 @@ vim.opt.scrolloff = 12
 if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.opt.shell = "pwsh.exe"
 end
+
+if vim.loop.os_uname().sysname == "Linux" and vim.loop.os_uname().release:lower():find 'microsoft' then
+  vim.g.netrw_browsex_viewer = "cmd.exe /C start"
+end
