@@ -66,9 +66,13 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 
 vim.keymap.set('n', "]b", "<cmd>BufferLineCycleNext<CR>", { desc = "Go to next buffer", silent = true })
+vim.keymap.set('n', "L", "<cmd>BufferLineCycleNext<CR>", { desc = "Go to next buffer", silent = true })
 vim.keymap.set('n', "[b", "<cmd>BufferLineCyclePrev<CR>", { desc = "Go to prev buffer", silent = true })
+vim.keymap.set('n', "H", "<cmd>BufferLineCyclePrev<CR>", { desc = "Go to prev buffer", silent = true })
 vim.keymap.set('n', "]B", "<cmd>BufferLineMoveNext<CR>", { desc = "Move buffer right", silent = true })
 vim.keymap.set('n', "[B", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer left", silent = true })
+vim.keymap.set('n', '<leader>bl', '<cmd>BufferLineCloseRight<CR>', { desc = 'Delete buffers to the right' })
+vim.keymap.set('n', '<leader>bh', '<cmd>BufferLineCloseLeft<CR>', { desc = 'Delete buffers to the left' })
 
 vim.keymap.set('n', '<leader>q', '<cmd>qa<cr>', { desc = "Close session" })
 vim.keymap.set('n', '<leader>ur', '<cmd>SessionRestore<cr>', { desc = "[R]estore session" })
