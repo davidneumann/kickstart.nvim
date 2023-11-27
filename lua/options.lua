@@ -16,3 +16,5 @@ end
 if vim.loop.os_uname().sysname == "Linux" and vim.loop.os_uname().release:lower():find 'microsoft' then
   vim.g.netrw_browsex_viewer = "cmd.exe /C start"
 end
+
+vim.opt.colorcolumn = "80,120"
