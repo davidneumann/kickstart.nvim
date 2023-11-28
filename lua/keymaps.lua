@@ -14,7 +14,7 @@ vim.keymap.set('n', 'q', '<Nop>')
 vim.g.maplocalleader = ' '
 local wkl = require('which-key')
 
-vim.cmd('autocmd FileType,VimEnter * lua setKeybinds()')
+vim.cmd('autocmd FileType,VimEnter,BufEnter * lua setKeybinds()')
 function setKeybinds()
   local fileTy = vim.api.nvim_buf_get_option(0, "filetype")
   local opts = { prefix = '<localleader>', buffer = 0 }
@@ -39,6 +39,7 @@ function setKeybinds()
           },
         })
       end, 'Remove Unused Imports' },
+      ['cc'] = { ':TSC<cr>', 'TSC Project Wide' },
     }, opts)
   elseif fileTy == 'sh' then
     --Left here as an example for future me
@@ -75,7 +76,7 @@ vim.keymap.set('n', "[B", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer l
 vim.keymap.set('n', '<leader>bl', '<cmd>BufferLineCloseRight<CR>', { desc = 'Delete buffers to the right' })
 vim.keymap.set('n', '<leader>bh', '<cmd>BufferLineCloseLeft<CR>', { desc = 'Delete buffers to the left' })
 
-vim.keymap.set('n', '<leader>q', '<cmd>qa<cr>', { desc = "Close session" })
+-- vim.keymap.set('n', '<leader>q', '<cmd>qa<cr>', { desc = "Close session" })
 vim.keymap.set('n', '<leader>ur', '<cmd>SessionRestore<cr>', { desc = "[R]estore session" })
 vim.keymap.set('n', '<leader>uq', '<cmd>SessionSave<cr><cmd>qa<cr>', { desc = "[Q]uit session" })
 
@@ -91,3 +92,8 @@ vim.keymap.set('n', '<leader>h4', function() require("harpoon.ui").nav_file(4) e
 
 vim.keymap.set('n', '<leader>bd', ':bd<cr>', { desc = "[B]uffer [D]elete / Close" })
 vim.keymap.set('n', '<leader>bs', ':w<cr>', { desc = "[B]uffer [S]ave" })
+
+vim.keymap.set('n', '<leader>q', ':botright copen<cr>', { desc = 'Open Quickfix List', silent = true })
+vim.keymap.set('n', '<leader>Q', ':cclose<cr>', { desc = 'Close Quickfix List', silent = true })
+vim.keymap.set('n', '<leader>l', ':lopen<cr>', { desc = 'Open Location List', silent = true })
+vim.keymap.set('n', '<leader>L', ':lclose<cr>', { desc = 'Close Location List', silent = true })
