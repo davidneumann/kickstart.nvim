@@ -18,3 +18,5 @@ if vim.loop.os_uname().sysname == "Linux" and vim.loop.os_uname().release:lower(
 end
 
 vim.opt.colorcolumn = "80,120"
+
+vim.opt.completeopt = "noinsert"
