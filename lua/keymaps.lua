@@ -97,3 +97,7 @@ vim.keymap.set('n', '<leader>q', ':botright copen<cr>', { desc = 'Open Quickfix 
 vim.keymap.set('n', '<leader>Q', ':cclose<cr>', { desc = 'Close Quickfix List', silent = true })
 vim.keymap.set('n', '<leader>l', ':lopen<cr>', { desc = 'Open Location List', silent = true })
 vim.keymap.set('n', '<leader>L', ':lclose<cr>', { desc = 'Close Location List', silent = true })
+
+vim.keymap.set("n", "<leader>sa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+  { desc = "[S]earch ripgrep with [A]rgs" })
+
