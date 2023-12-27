@@ -12,12 +12,17 @@ return {
 						engine = "nvim-cmp"
 					}
 				},
+				["core.journal"] = {
+
+				},
 				["core.summary"] = {},
 				["core.dirman"] = { -- Manages Neorg workspaces
 					config = {
 						workspaces = {
 							notes = "~/notes",
+							journal = "~/notes/journal"
 						},
+						default_workspace = "notes"
 					},
 				},
 			},
