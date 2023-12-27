@@ -2,6 +2,7 @@ vim.keymap.set('n', '<space>sk', ':Telescope keymaps<cr>', { desc = '[S]earch [K
 vim.keymap.set('n', '<leader>sz', ':Telescope grep_string search=<cr>', { desc = '[S]earch Fu[Z]zy Code' })
 vim.keymap.set({ 'n' }, '<C-_>', ':ToggleTerm direction=float <cr>', { desc = 'Toggle floating term' })
 vim.keymap.set('n', '<Space>e', ':NvimTreeToggle<cr>', { desc = 'Toggle file tree' })
+vim.keymap.set('n', '<Space>E', ':NvimTreeFindFile<cr>', { desc = 'Open File Tree & Focus File' })
 
 vim.keymap.set('n', '<space>cf', ':lua vim.lsp.buf.format()<cr>', { desc = 'Format code with LSP' })
 
@@ -97,3 +98,27 @@ vim.keymap.set('n', '<leader>q', ':botright copen<cr>', { desc = 'Open Quickfix 
 vim.keymap.set('n', '<leader>Q', ':cclose<cr>', { desc = 'Close Quickfix List', silent = true })
 vim.keymap.set('n', '<leader>l', ':lopen<cr>', { desc = 'Open Location List', silent = true })
 vim.keymap.set('n', '<leader>L', ':lclose<cr>', { desc = 'Close Location List', silent = true })
+
+vim.keymap.set("n", "<leader>sa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+  { desc = "[S]earch ripgrep with [A]rgs" })
+
+vim.keymap.set("n", "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end,
+  { desc = "[T]est [O]utput" })
+vim.keymap.set("n", "<leader>tO", function() require("neotest").output_panel.toggle() end,
+  { desc = "[T]est Toggle [S-O]utput panel" })
+vim.keymap.set("n", "<leader>ts", function() require("neotest").summary.open() end,
+  { desc = "[T]est [S]ummary" })
+vim.keymap.set("n", "<leader>tS", function() require("neotest").summary.toggle() end,
+  { desc = "[T]est Toggle [S-S]ummary" })
+vim.keymap.set("n", "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end,
+  { desc = "[T]est Run all [S-T]est files" })
+
+vim.keymap.set("v", "<leader>cf", vim.lsp.buf.format, { desc = "Format selected lines only?", silent = false})
+
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
