@@ -2,6 +2,7 @@ vim.keymap.set('n', '<space>sk', ':Telescope keymaps<cr>', { desc = '[S]earch [K
 vim.keymap.set('n', '<leader>sz', ':Telescope grep_string search=<cr>', { desc = '[S]earch Fu[Z]zy Code' })
 vim.keymap.set({ 'n' }, '<C-_>', ':ToggleTerm direction=float <cr>', { desc = 'Toggle floating term' })
 vim.keymap.set('n', '<Space>e', ':NvimTreeToggle<cr>', { desc = 'Toggle file tree' })
+vim.keymap.set('n', '<Space>E', ':NvimTreeFindFile<cr>', { desc = 'Open File Tree & Focus File' })
 
 vim.keymap.set('n', '<space>cf', ':lua vim.lsp.buf.format()<cr>', { desc = 'Format code with LSP' })
 
