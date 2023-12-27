@@ -101,3 +101,11 @@ vim.keymap.set('n', '<leader>L', ':lclose<cr>', { desc = 'Close Location List', 
 vim.keymap.set("n", "<leader>sa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
   { desc = "[S]earch ripgrep with [A]rgs" })
 
+
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
