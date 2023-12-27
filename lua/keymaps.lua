@@ -101,6 +101,17 @@ vim.keymap.set('n', '<leader>L', ':lclose<cr>', { desc = 'Close Location List', 
 vim.keymap.set("n", "<leader>sa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
   { desc = "[S]earch ripgrep with [A]rgs" })
 
+vim.keymap.set("n", "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end,
+  { desc = "[T]est [O]utput" })
+vim.keymap.set("n", "<leader>tO", function() require("neotest").output_panel.toggle() end,
+  { desc = "[T]est Toggle [S-O]utput panel" })
+vim.keymap.set("n", "<leader>ts", function() require("neotest").summary.open() end,
+  { desc = "[T]est [S]ummary" })
+vim.keymap.set("n", "<leader>tS", function() require("neotest").summary.toggle() end,
+  { desc = "[T]est Toggle [S-S]ummary" })
+vim.keymap.set("n", "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end,
+  { desc = "[T]est Run all [S-T]est files" })
+
 
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()
