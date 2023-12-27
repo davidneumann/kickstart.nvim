@@ -9,9 +9,9 @@ vim.opt.expandtab = true
 vim.wo.relativenumber = true
 vim.opt.scrolloff = 12
 
-if vim.loop.os_uname().sysname == "Windows_NT" then
-  vim.opt.shell = "pwsh.exe"
-end
+-- if vim.loop.os_uname().sysname == "Windows_NT" then
+--   vim.opt.shell = "pwsh.exe"
+-- end
 
 if vim.loop.os_uname().sysname == "Linux" and vim.loop.os_uname().release:lower():find 'microsoft' then
   vim.g.netrw_browsex_viewer = "cmd.exe /C start"
@@ -20,3 +20,6 @@ end
 vim.opt.colorcolumn = "80,120"
 
 vim.opt.completeopt = "noinsert"
+
+vim.opt.wrap = true
+vim.opt.linebreak = true
