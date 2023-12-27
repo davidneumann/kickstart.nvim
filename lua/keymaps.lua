@@ -113,6 +113,7 @@ vim.keymap.set("n", "<leader>tS", function() require("neotest").summary.toggle()
 vim.keymap.set("n", "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end,
   { desc = "[T]est Run all [S-T]est files" })
 
+vim.keymap.set("v", "<leader>cf", vim.lsp.buf.format, { desc = "Format selected lines only?", silent = false})
 
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()
