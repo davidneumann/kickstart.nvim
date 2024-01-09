@@ -36,7 +36,7 @@ return {
 			sources = {
 				--  to disable file types use
 				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-				formatting.prettier,                                          -- js/ts formatter
+				-- formatting.prettier,                                          -- js/ts formatter
 				diagnostics.eslint_d.with({                                   -- js/ts linter
 					condition = function(utils)
 						return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
