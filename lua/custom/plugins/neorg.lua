@@ -11,6 +11,7 @@ return {
 		require("neorg").setup {
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
+				[ "core.export" ] = {},
 				["core.concealer"] = {
 					config = {
 						folds = false,
