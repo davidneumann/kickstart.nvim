@@ -1,4 +1,4 @@
 return {
 	'dmmulroy/tsc.nvim',
-	opts = {}
+	opts = {flags = {build = false}}
 }

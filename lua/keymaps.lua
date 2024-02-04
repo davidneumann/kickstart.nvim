@@ -31,6 +31,20 @@ function setKeybinds()
           },
         })
       end, 'Organize Imports' },
+      ['ce'] = {
+        function()
+          vim.opt.makeprg = "npm run --silent lint -- --format unix \\| grep ':'"
+          vim.cmd("make")
+          vim.cmd("botright copen")
+        end, 'Run eslint Project Wide',
+      },
+      ['cm'] = {
+        function()
+          vim.opt.makeprg = "npx tsc --pretty false \\| grep \"./\" \\| sed -r 's/\\(([0-9]+),([0-9]+)\\)/:\\1:\\2/' \\| sed \"s@^@$PWD/@\""
+          vim.cmd("make")
+          vim.cmd("botright copen")
+        end, 'Run tsc Project Wide',
+      },
       ['cr'] = { function()
         vim.lsp.buf.code_action({
           apply = true,
@@ -94,8 +108,9 @@ vim.keymap.set('n', '<leader>h4', function() require("harpoon.ui").nav_file(4) e
 vim.keymap.set('n', '<leader>bd', ':bd<cr>', { desc = "[B]uffer [D]elete / Close" })
 vim.keymap.set('n', '<leader>bs', ':w<cr>', { desc = "[B]uffer [S]ave" })
 
-vim.keymap.set('n', '<leader>q', ':botright copen<cr>', { desc = 'Open Quickfix List', silent = true })
-vim.keymap.set('n', '<leader>Q', ':cclose<cr>', { desc = 'Close Quickfix List', silent = true })
+vim.keymap.set('n', '<leader>qo', ':botright copen<cr>', { desc = '[Q]uickfix List [O]pen', silent = true })
+vim.keymap.set('n', '<leader>qh', ':cclose<cr>', { desc = '[Q]uickfix List [H]ide', silent = true })
+vim.keymap.set("n", "<leader>qc", ":call setqflist([], 'r')<cr>", { desc = "[Q]uickfix List [C]lear", silent = true })
 vim.keymap.set('n', '<leader>l', ':lopen<cr>', { desc = 'Open Location List', silent = true })
 vim.keymap.set('n', '<leader>L', ':lclose<cr>', { desc = 'Close Location List', silent = true })
 
@@ -113,7 +128,7 @@ vim.keymap.set("n", "<leader>tS", function() require("neotest").summary.toggle()
 vim.keymap.set("n", "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end,
   { desc = "[T]est Run all [S-T]est files" })
 
-vim.keymap.set("v", "<leader>cf", vim.lsp.buf.format, { desc = "Format selected lines only?", silent = false})
+vim.keymap.set("v", "<leader>cf", vim.lsp.buf.format, { desc = "Format selected lines only?", silent = false })
 
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()
@@ -122,3 +137,5 @@ end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
   require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
+
+vim.keymap.set("n", "<leader>Dt", "<cmd>TroubleToggle workspace_diagnostics<cr>", {desc = "[T]rouble workspace diagnostics"})

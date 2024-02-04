@@ -5,6 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
+		"nvim-neotest/neotest-go",
 	},
 	config = function()
 		require('neotest').setup({
@@ -16,6 +17,7 @@ return {
 						return vim.fn.getcwd()
 					end,
 				}),
+				require("neotest-go")
 			}
 		})
 	end
