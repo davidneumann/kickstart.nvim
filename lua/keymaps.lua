@@ -139,3 +139,6 @@ vim.keymap.set("n", "[t", function()
 end, { desc = "Previous todo comment" })
 
 vim.keymap.set("n", "<leader>Dt", "<cmd>TroubleToggle workspace_diagnostics<cr>", {desc = "[T]rouble workspace diagnostics"})
+
+vim.keymap.set("n", "<leader>uZ", "<cmd>ZenMode<cr>", { desc = "[U]I Toggle [Z]enMode"})
+vim.keymap.set("n", "<leader>uT", "<cmd>Twilight<cr>", { desc = "[U]I Toggle [T]wilight"})
