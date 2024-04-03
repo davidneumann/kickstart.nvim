@@ -314,9 +314,20 @@ require('telescope').setup {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ["<S-Down>"] = require("telescope.actions").cycle_history_next,
+        ["<S-Up>"] = require("telescope.actions").cycle_history_prev,
       },
     },
+    -- layout_strategy = "vertical",
+    path_display = { "truncate" },
   },
+  pickers = {
+    lsp_references = { fname_width = 100, },
+  },
+  history = {
+    path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+    limit = 100,
+  }
 }
 
 -- Enable telescope fzf native, if installed
@@ -385,7 +396,7 @@ vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc =
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'json' },
 
     --Required for ejs
     embedded_template = { enable = true, },
@@ -522,7 +533,7 @@ require('which-key').register {
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
   ['<leader>u'] = { name = '[U]I', _ = 'which_key_ignore' },
-  ['<leader>q'] = { name = '[Q]uickfix List', _ = 'which_key_ignore' },
+  ['<leader>q'] = { name = '[Q]uickfix List', _ = 'which_key_ignore' }
 }
 
 -- mason-lspconfig requires that these setup functions are called in this order
@@ -549,6 +560,7 @@ local servers = {
     },
   },
   html = { filetypes = { 'html', 'twig', 'hbs' } },
+  jsonls = {},
 
   lua_ls = {
     Lua = {

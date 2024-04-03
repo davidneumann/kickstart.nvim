@@ -23,3 +23,5 @@ vim.opt.completeopt = "noinsert"
 
 vim.opt.wrap = true
 vim.opt.linebreak = true
+
+vim.opt.foldlevelstart=99
