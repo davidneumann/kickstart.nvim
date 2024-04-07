@@ -90,6 +90,7 @@ return {
 		"folke/neodev.nvim",
 		'williamboman/mason.nvim',
 		'jay-babu/mason-nvim-dap.nvim',
+		"ldelossa/nvim-dap-projects"
 	},
 	config = function()
 		require("neodev").setup({ library = { plugins = { "nvim-dap-ui" }, types = true }, })
@@ -174,6 +175,9 @@ return {
 				},
 			}
 		end
+
+		require('nvim-dap-projects').config_paths = {"./vscode/nvim-dap.lua"}
+		require('nvim-dap-projects').search_project_config()
 	end,
 	keys = {
 		{ "<leader>dc", "<cmd>DapContinue<cr>", desc = "[D]iagnostics [C]ontinue" },
