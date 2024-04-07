@@ -176,11 +176,14 @@ return {
 			}
 		end
 
-		require('nvim-dap-projects').config_paths = {"./vscode/nvim-dap.lua"}
+		require('nvim-dap-projects').config_paths = { "./vscode/nvim-dap.lua" }
 		require('nvim-dap-projects').search_project_config()
 	end,
 	keys = {
 		{ "<leader>dc", "<cmd>DapContinue<cr>", desc = "[D]iagnostics [C]ontinue" },
+		{ "<leader>dj", "<cmd>DapStepOver<cr>", desc = "[D]iagnostics [C]ontinue" },
+		{ "<leader>dJ", "<cmd>DapStepOut<cr>",  desc = "[D]iagnostics [C]ontinue" },
+		{ "<leader>di", "<cmd>DapStepInto<cr>", desc = "[D]iagnostics [C]ontinue" },
 		{
 			"<leader>db",
 			function()
