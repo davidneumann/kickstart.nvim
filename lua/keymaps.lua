@@ -150,8 +150,8 @@ vim.keymap.set("n", "[t", function()
   require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
-vim.keymap.set("n", "<leader>Dt", "<cmd>TroubleToggle workspace_diagnostics<cr>",
-  { desc = "[T]rouble workspace diagnostics" })
+vim.keymap.set("n", "<leader>dt", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+  { desc = "[D]iagnsotics [T]rouble workspace wide" })
 
 vim.keymap.set("n", "<leader>uZ", "<cmd>ZenMode<cr>", { desc = "[U]I Toggle [Z]enMode" })
 vim.keymap.set("n", "<leader>uT", "<cmd>Twilight<cr>", { desc = "[U]I Toggle [T]wilight" })
