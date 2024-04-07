@@ -110,6 +110,68 @@ return {
 		require("nvim-dap-virtual-text").setup({
 			clear_on_continue = true
 		})
+
+    require('mason-nvim-dap').setup {
+      -- Makes a best effort to setup the various debuggers with
+      -- reasonable debug configurations
+      automatic_setup = true,
+
+      -- You can provide additional configuration to the handlers,
+      -- see mason-nvim-dap README for more information
+      handlers = {},
+
+      -- You'll need to check that you have the required things installed
+      -- online, please don't ask me how to install them :)
+      ensure_installed = {
+        -- Update this to ensure that you have the debuggers for the langs you want
+        'js-debug-adapater'
+      },
+    }
+
+		dap.adapters["pwa-node"] = {
+			type = "server",
+			host = "localhost",
+			port = "${port}", --let both ports be the same for now...
+			executable = {
+				command = "node",
+				-- -- 💀 Make sure to update this path to point to your installation
+				args = { vim.fn.stdpath('data') .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js", "${port}" },
+				-- command = "js-debug-adapter",
+				-- args = { "${port}" },
+			},
+		}
+
+		for _, language in ipairs({ "typescript", "javascript" }) do
+			dap.configurations[language] = {
+				{
+					type = 'pwa-node',
+					request = 'launch',
+					name = 'Launch Current File (pwa-node)',
+					cwd = "${workspaceFolder}", -- vim.fn.getcwd(),
+					args = { '${file}' },
+					sourceMaps = true,
+					protocol = 'inspector',
+				},
+				{
+					type = 'pwa-node',
+					request = 'launch',
+					name = 'Launch Current File (Typescript)',
+					cwd = "${workspaceFolder}",
+					runtimeArgs = { '--loader=ts-node/esm' },
+					program = "${file}",
+					runtimeExecutable = 'node',
+					-- args = { '${file}' },
+					sourceMaps = true,
+					protocol = 'inspector',
+					outFiles = { "${workspaceFolder}/**/**/*", "!**/node_modules/**" },
+					skipFiles = { '<node_internals>/**', 'node_modules/**' },
+					resolveSourceMapLocations = {
+						"${workspaceFolder}/**",
+						"!**/node_modules/**",
+					},
+				},
+			}
+		end
 	end,
 	keys = {
 		{ "<leader>dc", "<cmd>DapContinue<cr>", desc = "[D]iagnostics [C]ontinue" },
@@ -154,4 +216,5 @@ return {
 			desc = "[D]iagnostics [T]oggle UI"
 		},
 	}
+	,
 }
