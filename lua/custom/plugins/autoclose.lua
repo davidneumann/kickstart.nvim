@@ -1,4 +1,6 @@
 return {
-	'm4xshen/autoclose.nvim',
-	opts = {}
+	-- {
+	-- 	'm4xshen/autoclose.nvim',
+	-- 	opts = {}
+	-- }
 }
