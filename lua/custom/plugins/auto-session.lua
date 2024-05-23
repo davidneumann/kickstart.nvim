@@ -6,8 +6,8 @@ function _G.close_all_floating_wins()
 		end
 	end
 
-	local api = require("nvim-tree.api")
-	api.tree.close()
+	-- local api = require("nvim-tree.api")
+	-- api.tree.close()
 end
 
 return {
