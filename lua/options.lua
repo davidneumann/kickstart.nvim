@@ -25,3 +25,5 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 
 vim.opt.foldlevelstart=99
+
+vim.opt.inccommand = "split"
