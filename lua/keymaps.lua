@@ -6,6 +6,14 @@ vim.keymap.set({ 'n' }, '<C-_>', ':ToggleTerm direction=float <cr>', { desc = 'T
 
 vim.keymap.set('n', '<leader>gg', '<cmd>Neogit<cr>', { desc = '[G]it Neo[g]it' })
 vim.keymap.set('n', '<leader>gp', '<cmd>Git push<cr>', { desc = '[G]it [P]ush' })
+vim.keymap.set('n', '<leader>gwc', function()
+  require('telescope').extensions.git_worktree.create_git_worktree()
+end, { desc = '[G]it Create [W]orktree' })
+vim.keymap.set('n', '<leader>sW', function()
+  require("telescope").extensions.git_worktree.git_worktrees({
+      path_display = {},
+    })
+end, { desc = '[S]earch Git [W]orktrees' })
 
 -- -- Disable macro recording
 -- vim.keymap.set('n', 'q', '<Nop>')
