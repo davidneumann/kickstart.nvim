@@ -110,6 +110,7 @@ vim.keymap.set('n', '<leader>hr', function() require("harpoon.mark").remove_file
   { desc = '[H]arpoon [R]emove File' })
 vim.keymap.set('n', '<leader>hs', '<cmd>Telescope harpoon marks<cr>', { desc = '[H]arpoon [S]search' })
 vim.keymap.set('n', '<leader>sh', '<cmd>Telescope harpoon marks<cr>', { desc = '[S]search [H]arpoon' })
+vim.keymap.set('n', '<leader>hl', function() require("harpoon.ui").toggle_quick_menu() end, { desc = '[H]arpoon [L]ist' })
 vim.keymap.set('n', '<leader>h1', function() require("harpoon.ui").nav_file(1) end, { desc = '[H]arpoon Goto File [1]' })
 vim.keymap.set('n', '<leader>h2', function() require("harpoon.ui").nav_file(2) end, { desc = '[H]arpoon Goto File [2]' })
 vim.keymap.set('n', '<leader>h3', function() require("harpoon.ui").nav_file(3) end, { desc = '[H]arpoon Goto File [3]' })
